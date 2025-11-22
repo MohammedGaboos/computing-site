@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع تعليمي عن الحوسبة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 2px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 3rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .about-icon {
+            font-size: 5rem;
+            text-align: center;
+            color: #667eea;
+        }
+
+        /* Topics Section */
+        .topics-section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .topics-section h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .topic-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .topic-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Importance Section */
+        .importance-section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .importance-section h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .importance-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .importance-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .importance-icon {
+            font-size: 2rem;
+            color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .importance-item h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .importance-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Lesson Section */
+        .lesson-section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .lesson-section h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .lesson-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .lesson-intro {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-right: 4px solid #667eea;
+        }
+
+        .lesson-intro h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-intro p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Commands Grid */
+        .commands-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .command-item {
+            background: #f9f9f9;
+            border-right: 4px solid #667eea;
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: box-shadow 0.3s;
+        }
+
+        .command-item:hover {
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .command-item h4 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .command-item .description {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .code-block code {
+            flex: 1;
+        }
+
+        .copy-btn {
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background: #764ba2;
+        }
+
+        /* Workflow Section */
+        .workflow {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-right: 4px solid #667eea;
+        }
+
+        .workflow h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .workflow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: #666;
+        }
+
+        /* Tips Box */
+        .tips-box {
+            background: #e3f2fd;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+
+        .tips-box h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .tips-box p {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.1);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .importance-list {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section,
+            .topics-section,
+            .importance-section,
+            .lesson-section {
+                padding: 2rem;
+                margin: 2rem 0;
+            }
+
+            .code-block {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">💻</span>
+                <span>موقع تعليمي عن الحوسبة</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>مرحباً بك في عالم الحوسبة</h1>
+                <p>استكشف أساسيات الحوسبة والتكنولوجيا الحديثة وفهم كيفية عمل أجهزة الكمبيوتر والبرمجيات</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <h2>ما هي الحوسبة؟</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>تعريف الحوسبة</h3>
+                        <p>الحوسبة هي علم وفن استخدام أجهزة الكمبيوتر ومعالجة البيانات باستخدام البرمجيات والخوارزميات. تشمل الحوسبة جميع جوانب تطوير وتشغيل الأنظمة الحاسوبية.</p>
+                        <p>في العصر الرقمي الحالي، أصبحت الحوسبة جزءاً أساسياً من حياتنا اليومية، من استخدام الهواتف الذكية إلى الأنظمة المعقدة في الشركات الكبرى.</p>
+                        <p>تعلم أساسيات الحوسبة يفتح لك أبواباً واسعة في عالم التكنولوجيا والابتكار.</p>
+                    </div>
+                    <div class="about-icon">
+                        🖥️
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topics Section -->
+        <section class="topics-section">
+            <div class="container">
+                <h2>مجالات الحوسبة الرئيسية</h2>
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-card-icon">💾</div>
+                        <h3>هياكل البيانات</h3>
+                        <p>دراسة الطرق المختلفة لتنظيم وتخزين البيانات بكفاءة</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-card-icon">⚙️</div>
+                        <h3>الخوارزميات</h3>
+                        <p>فهم الخطوات المنطقية لحل المشاكل بطريقة فعالة</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-card-icon">🌐</div>
+                        <h3>الشبكات</h3>
+                        <p>تعلم كيفية ربط الأجهزة والتواصل عبر الإنترنت</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-card-icon">🔒</div>
+                        <h3>الأمان السيبراني</h3>
+                        <p>حماية الأنظمة والبيانات من التهديدات الرقمية</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-card-icon">📱</div>
+                        <h3>تطوير التطبيقات</h3>
+                        <p>بناء تطبيقات وبرامج للهواتف والويب</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-card-icon">🤖</div>
+                        <h3>الذكاء الاصطناعي</h3>
+                        <p>إنشاء أنظمة ذكية قادرة على التعلم والتطور</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Importance Section -->
+        <section class="importance-section">
+            <div class="container">
+                <h2>أهمية تعلم الحوسبة</h2>
+                <div class="importance-list">
+                    <div class="importance-item">
+                        <div class="importance-icon">🎯</div>
+                        <div>
+                            <h3>فرص وظيفية</h3>
+                            <p>الحوسبة توفر فرصاً وظيفية متنوعة وراتباً جيداً في سوق العمل العالمي</p>
+                        </div>
+                    </div>
+                    <div class="importance-item">
+                        <div class="importance-icon">💡</div>
+                        <div>
+                            <h3>الابتكار والإبداع</h3>
+                            <p>تطوير حلول جديدة ومبتكرة للمشاكل اليومية</p>
+                        </div>
+                    </div>
+                    <div class="importance-item">
+                        <div class="importance-icon">🚀</div>
+                        <div>
+                            <h3>التطور المستمر</h3>
+                            <p>مجال يتطور باستمرار يتطلب التعلم المستمر والتحديث</p>
+                        </div>
+                    </div>
+                    <div class="importance-item">
+                        <div class="importance-icon">🌍</div>
+                        <div>
+                            <h3>التأثير العالمي</h3>
+                            <p>إمكانية التأثير على ملايين الأشخاص حول العالم</p>
+                        </div>
+                    </div>
+                    <div class="importance-item">
+                        <div class="importance-icon">🧠</div>
+                        <div>
+                            <h3>تطوير مهارات التفكير</h3>
+                            <p>تحسين القدرة على حل المشاكل والتفكير المنطقي</p>
+                        </div>
+                    </div>
+                    <div class="importance-item">
+                        <div class="importance-icon">📚</div>
+                        <div>
+                            <h3>تعليم مستمر</h3>
+                            <p>مجال يوفر موارد تعليمية غنية ومجتمع متعاون</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lessons Section with Tabs -->
+        <section class="lesson-section">
+            <div class="container">
+                <h2>الدروس التعليمية</h2>
+                
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('lesson1')">الدرس الأول: أوامر Git</button>
+                    <button class="tab-btn" onclick="switchTab('lesson2')">الدرس الثاني: Collaboration</button>
+                </div>
+
+                <!-- LESSON 1 TAB -->
+                <div id="lesson1" class="tab-content active">
+                    <p class="lesson-subtitle">في هذا الدرس ستتعلم الأوامر الأساسية والضرورية لاستخدام نظام التحكم بالإصدارات Git بكفاءة.</p>
+
+                    <!-- Introduction -->
+                    <div class="lesson-intro">
+                        <h3>مقدمة عن Git</h3>
+                        <p>Git هو نظام تحكم بالإصدارات موزع يسمح لك بتتبع التغييرات في الملفات والمشاريع. يُستخدم على نطاق واسع في تطوير البرمجيات ويسهل التعاون بين المطورين.</p>
+                        <p>من خلال Git، يمكنك حفظ نسخ من مشروعك في نقاط زمنية مختلفة، والعودة إلى أي نسخة سابقة إذا لزم الأمر، والعمل على فروع مختلفة بشكل متوازي.</p>
+                    </div>
+
+                    <!-- Basic Commands -->
+                    <h3 style="font-size: 1.5rem; color: #333; margin: 2rem 0 1rem 0;">الأوامر الأساسية</h3>
+                    
+                    <div class="commands-grid">
+                        <div class="command-item">
+                            <h4>1. تهيئة مستودع جديد</h4>
+                            <p class="description">ينشئ مستودع Git جديد في المجلد الحالي</p>
+                            <div class="code-block">
+                                <code>git init</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git init')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>2. استنساخ مستودع موجود</h4>
+                            <p class="description">ينسخ مستودع موجود على GitHub إلى جهازك</p>
+                            <div class="code-block">
+                                <code>git clone https://github.com/username/repo.git</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git clone https://github.com/username/repo.git')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>3. التحقق من حالة المستودع</h4>
+                            <p class="description">يعرض حالة الملفات المعدلة والملفات المرحلة للتزام</p>
+                            <div class="code-block">
+                                <code>git status</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git status')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>4. إضافة ملفات للمرحلة</h4>
+                            <p class="description">يضيف ملف معين للمرحلة (Staging Area)</p>
+                            <div class="code-block">
+                                <code>git add filename.txt</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git add filename.txt')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>5. إضافة جميع الملفات المعدلة</h4>
+                            <p class="description">يضيف جميع الملفات المعدلة للمرحلة</p>
+                            <div class="code-block">
+                                <code>git add .</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git add .')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>6. حفظ التغييرات (Commit)</h4>
+                            <p class="description">يحفظ التغييرات مع رسالة توضح ما تم تعديله</p>
+                            <div class="code-block">
+                                <code>git commit -m "وصف التغييرات"</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git commit -m \"وصف التغييرات\"')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>7. رفع التغييرات إلى GitHub</h4>
+                            <p class="description">يرفع التغييرات المحفوظة إلى الفرع الرئيسي على GitHub</p>
+                            <div class="code-block">
+                                <code>git push origin main</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git push origin main')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>8. سحب آخر التحديثات</h4>
+                            <p class="description">يسحب آخر التحديثات من GitHub إلى جهازك</p>
+                            <div class="code-block">
+                                <code>git pull origin main</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git pull origin main')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>9. عرض سجل التزامات</h4>
+                            <p class="description">يعرض قائمة بجميع التزامات السابقة</p>
+                            <div class="code-block">
+                                <code>git log</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git log')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>10. إنشاء فرع جديد</h4>
+                            <p class="description">ينشئ فرع جديد لتطوير ميزة معينة</p>
+                            <div class="code-block">
+                                <code>git branch feature-name</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git branch feature-name')">نسخ</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workflow Section -->
+                    <div class="workflow">
+                        <h3>سير العمل الأساسي</h3>
+                        <div class="workflow-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>تهيئة المستودع</h4>
+                                    <p>استخدم <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">git init</code> لإنشاء مستودع جديد</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>تعديل الملفات</h4>
+                                    <p>قم بإجراء التغييرات التي تريدها على ملفات المشروع</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>إضافة التغييرات</h4>
+                                    <p>استخدم <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">git add</code> لإضافة الملفات المعدلة</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>حفظ التغييرات</h4>
+                                    <p>استخدم <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">git commit</code> لحفظ التغييرات</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>رفع التغييرات</h4>
+                                    <p>استخدم <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">git push</code> لرفع التغييرات</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tips Box -->
+                    <div class="tips-box">
+                        <h4>✓ نصائح مهمة</h4>
+                        <p>✓ استخدم رسائل التزام واضحة وموجزة</p>
+                        <p>✓ قم بالتزام التغييرات بشكل متكرر</p>
+                        <p>✓ تحقق دائماً من حالة المستودع قبل التزام</p>
+                        <p>✓ اسحب آخر التحديثات قبل البدء في العمل</p>
+                    </div>
+                </div>
+
+                <!-- LESSON 2 TAB -->
+                <div id="lesson2" class="tab-content">
+                    <p class="lesson-subtitle">تعلم كيفية التعاون مع فريق العمل باستخدام Git و GitHub بشكل فعال وآمن.</p>
+
+                    <!-- Introduction -->
+                    <div class="lesson-intro">
+                        <h3>مقدمة عن التعاون في Git</h3>
+                        <p>التعاون هو أحد أهم مميزات Git. يسمح لعدة مطورين بالعمل على نفس المشروع في نفس الوقت دون تضارب.</p>
+                        <p>من خلال استخدام الفروع (Branches) والطلبات (Pull Requests)، يمكن لكل مطور العمل على ميزة منفصلة، ثم دمج التغييرات بشكل منظم وآمن.</p>
+                    </div>
+
+                    <!-- Branches Section -->
+                    <div style="background: #f9f9f9; padding: 2rem; border-radius: 8px; margin: 2rem 0; border-right: 4px solid #667eea;">
+                        <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem;">فهم الفروع (Branches)</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">الفرع هو نسخة مستقلة من المشروع. الفرع الرئيسي يُسمى عادة <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">main</code> أو <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">master</code>.</p>
+                        <p style="color: #666;">عند العمل على ميزة جديدة، تنشئ فرع جديد من الفرع الرئيسي. بعد الانتهاء من العمل والاختبار، تدمج الفرع الجديد مع الفرع الرئيسي.</p>
+                    </div>
+
+                    <!-- Commands Section -->
+                    <h3 style="font-size: 1.5rem; color: #333; margin: 2rem 0 1rem 0;">أوامر التعاون</h3>
+                    
+                    <div class="commands-grid">
+                        <div class="command-item">
+                            <h4>1. إنشاء فرع جديد</h4>
+                            <p class="description">ينشئ فرع جديد للعمل على ميزة معينة</p>
+                            <div class="code-block">
+                                <code>git branch feature-name</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git branch feature-name')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>2. الانتقال إلى فرع معين</h4>
+                            <p class="description">ينقلك إلى الفرع المحدد</p>
+                            <div class="code-block">
+                                <code>git checkout feature-name</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git checkout feature-name')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>3. إنشاء والانتقال إلى فرع جديد</h4>
+                            <p class="description">ينشئ فرع جديد وينقلك إليه مباشرة</p>
+                            <div class="code-block">
+                                <code>git checkout -b feature-name</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git checkout -b feature-name')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>4. عرض جميع الفروع المحلية</h4>
+                            <p class="description">يعرض قائمة بجميع الفروع المحلية</p>
+                            <div class="code-block">
+                                <code>git branch</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git branch')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>5. عرض جميع الفروع</h4>
+                            <p class="description">يعرض قائمة بجميع الفروع المحلية والبعيدة</p>
+                            <div class="code-block">
+                                <code>git branch -a</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git branch -a')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>6. دمج فرع مع الفرع الحالي</h4>
+                            <p class="description">يدمج التغييرات من فرع معين</p>
+                            <div class="code-block">
+                                <code>git merge feature-name</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git merge feature-name')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>7. رفع فرع جديد إلى GitHub</h4>
+                            <p class="description">يرفع الفرع الجديد إلى GitHub</p>
+                            <div class="code-block">
+                                <code>git push origin feature-name</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git push origin feature-name')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>8. سحب آخر التحديثات من فرع بعيد</h4>
+                            <p class="description">يسحب معلومات الفروع البعيدة</p>
+                            <div class="code-block">
+                                <code>git fetch origin</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git fetch origin')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>9. حل تضارب الدمج</h4>
+                            <p class="description">يعرض الملفات التي بها تضاربات</p>
+                            <div class="code-block">
+                                <code>git status</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git status')">نسخ</button>
+                            </div>
+                        </div>
+
+                        <div class="command-item">
+                            <h4>10. حذف فرع محلي</h4>
+                            <p class="description">يحذف فرع محلي بعد دمجه</p>
+                            <div class="code-block">
+                                <code>git branch -d feature-name</code>
+                                <button class="copy-btn" onclick="copyToClipboard('git branch -d feature-name')">نسخ</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pull Requests Section -->
+                    <div style="background: #f9f9f9; padding: 2rem; border-radius: 8px; margin: 2rem 0; border-right: 4px solid #667eea;">
+                        <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem;">طلبات السحب (Pull Requests)</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">طلب السحب هو طريقة لطلب دمج التغييرات من فرع إلى فرع آخر.</p>
+                        <p style="color: #666;"><strong>خطوات إنشاء طلب سحب:</strong></p>
+                        <div style="margin-left: 1rem; margin-top: 1rem; color: #666;">
+                            <p>1. ادفع فرعك إلى GitHub</p>
+                            <p>2. اذهب إلى مستودعك على GitHub</p>
+                            <p>3. اضغط على "Create Pull Request"</p>
+                            <p>4. أضف وصف للتغييرات</p>
+                            <p>5. انتظر مراجعة الكود ثم دمج الطلب</p>
+                        </div>
+                    </div>
+
+                    <!-- Best Practices Section -->
+                    <div class="tips-box">
+                        <h4>✓ أفضل الممارسات</h4>
+                        <p>✓ استخدم أسماء واضحة للفروع</p>
+                        <p>✓ قم بسحب آخر التحديثات قبل البدء</p>
+                        <p>✓ قم بالتزام التغييرات بشكل متكرر</p>
+                        <p>✓ اطلب مراجعة الكود قبل الدمج</p>
+                        <p>✓ احذف الفروع بعد دمجها</p>
+                        <p>✓ تواصل مع فريقك حول التغييرات الكبيرة</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 موقع تعليمي عن الحوسبة. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('تم نسخ الأمر بنجاح!');
+            }).catch(err => {
+                console.error('فشل النسخ:', err);
+            });
+        }
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
